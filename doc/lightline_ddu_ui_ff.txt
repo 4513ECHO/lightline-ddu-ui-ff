@@ -27,6 +27,14 @@ You have to register a component manually: >
 	      \ },
 	      \ }
 
+Vim v9.0.1276+ or Neovim v0.8.0+ is required, and following plugins:
+|denops.vim|, |ddu|.vim, |ddu-ui-ff|, |lightline|.vim.
+
+https://github.com/vim-denops/denops.vim
+https://github.com/Shougo/ddu.vim
+https://github.com/Shougo/ddu-ui-ff
+https://github.com/itchyny/lightline.vim
+
 ==============================================================================
 INTERFACE                                      *lightline-ddu-ui-ff-interface*
 
@@ -43,9 +51,11 @@ lightline#ddu_ui_ff#on_update()              *lightline#ddu_ui_ff#on_update()*
 ==============================================================================
 FAQ                                                  *lightline-ddu-ui-ff-faq*
 
-Q: |status-line| isn't updated while moving the cursor from the filter window.
+Q: the component isn't updated while moving the cursor from the filter window.
 
-A: Please use |ddu#custom#action()| for |ddu-ui-ff|: >
+A: It is a limit of Vim that |CursourModed| autocmd is not triggered when you
+does not focus on the buffer.
+Please update manually by using |ddu#custom#action()| for |ddu-ui-ff|: >
 	call ddu#custom#action('ui', 'ff', 'updateLightline',
 	      \ { -> lightline#ddu_ui_ff#on_update() })
 	" In ddu-ff-filter
