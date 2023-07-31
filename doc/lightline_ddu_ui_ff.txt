@@ -11,7 +11,6 @@ CONTENTS                                        *lightline-ddu-ui-ff-contents*
 Introduction					|lightline-ddu-ui-ff-introduction|
 Interface					|lightline-ddu-ui-ff-interface|
   Functions					|lightline-ddu-ui-ff-functions|
-FAQ						|lightline-ddu-ui-ff-faq|
 About						|lightline-ddu-ui-ff-about|
 
 ==============================================================================
@@ -44,27 +43,6 @@ FUNCTIONS                                      *lightline-ddu-ui-ff-functions*
 lightline#ddu_ui_ff#component()              *lightline#ddu_ui_ff#component()*
 	A function can be used for |g:lightline.component_function|.
 	Return an empty string when ddu UI is not available.
-
-lightline#ddu_ui_ff#on_update()              *lightline#ddu_ui_ff#on_update()*
-	Call |lightline#update()| and execute |:redrawstatus| with a debounce.
-
-==============================================================================
-FAQ                                                  *lightline-ddu-ui-ff-faq*
-
-Q: the component isn't updated while moving the cursor from the filter window.
-
-A: It is a limit of Vim that |CursourModed| autocmd is not triggered when you
-does not focus on the buffer.
-Please update manually by using |ddu#custom#action()| for |ddu-ui-ff|: >
-	call ddu#custom#action('ui', 'ff', 'updateLightline',
-	      \ { -> lightline#ddu_ui_ff#on_update() })
-	" In ddu-ff-filter
-	inoremap <buffer> <C-n> <Cmd>call ddu#ui#multi_actions([
-	      \ ['cursorNext'], ['updateLightline'],
-	      \ ])<CR>
-	inoremap <buffer> <C-p> <Cmd>call ddu#ui#multi_actions([
-	      \ ['cursorPrevious'], ['updateLightline'],
-	      \ ])<CR>
 
 ==============================================================================
 ABOUT                                              *lightline-ddu-ui-ff-about*
