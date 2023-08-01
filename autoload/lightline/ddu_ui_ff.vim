@@ -20,15 +20,3 @@ function! lightline#ddu_ui_ff#component() abort
         \ status.name, cur, avail, max, status.done ? '' : '[async]',
         \ ]->{ args -> call('printf', args) }()->trim()
 endfunction
-
-let s:timer = v:null
-function! s:update() abort
-  call lightline#update()
-  redrawstatus
-endfunction
-function! lightline#ddu_ui_ff#update() abort
-  if s:timer isnot# v:null
-    silent! call timer_stop(s:timer)
-  endif
-  let s:timer = timer_start(200, { -> s:update() })
-endfunction
