@@ -3,7 +3,7 @@
 Author: Hibiki <mail@4513echo.dev>
 License: MIT License
 URL: https://github.com/4513ECHO/lightline-ddu-ui-ff
-Last change: 2023 Jul 31
+Last change: 2023 Aug 01
 
 ==============================================================================
 CONTENTS                                        *lightline-ddu-ui-ff-contents*
@@ -19,13 +19,6 @@ INTRODUCTION                                *lightline-ddu-ui-ff-introduction*
 *lightline-ddu-ui-ff* is a plugin to provide a |lightline| integration for
 |ddu-ui-ff|.
 
-You have to register a component manually: >
-	let g:lightline = #{
-	      \ component_function: #{
-	      \   ddu-ui-ff: 'lightline#ddu_ui_ff#component',
-	      \ },
-	      \ }
-
 Vim v9.0.1276+ or Neovim v0.8.0+ is required, and following plugins:
 |denops.vim|, |ddu|.vim, |ddu-ui-ff|, |lightline|.vim.
 
@@ -34,6 +27,25 @@ https://github.com/Shougo/ddu.vim
 https://github.com/Shougo/ddu-ui-ff
 https://github.com/itchyny/lightline.vim
 
+Then you have to set up following settings:
+
+- Disable |status-line| overriding by |ddu-ui-ff| (|ddu-ui-ff-param-statusline|): >
+	call ddu#custom#patch_global('uiParams', #{
+	      \ ff: #{ statusline: v:false },
+	      \ })
+
+- Register the function to |g:lightline.component_function|: >
+	let g:lightline = #{
+	      \ component_function: #{
+	      \   ddu-ui-ff: 'lightline#ddu_ui_ff#component',
+	      \ },
+	      \ }
+
+- If you use |ddu-ui-ff| with Neovim's floating window (|api-floatwin|), in the
+  other word if you set |ddu-ui-ff-param-split| to "floating", it is
+  recommended to set 'laststatus' to 3. >
+	set laststatus=3
+
 ==============================================================================
 INTERFACE                                      *lightline-ddu-ui-ff-interface*
 
@@ -41,7 +53,8 @@ INTERFACE                                      *lightline-ddu-ui-ff-interface*
 FUNCTIONS                                      *lightline-ddu-ui-ff-functions*
 
 lightline#ddu_ui_ff#component()              *lightline#ddu_ui_ff#component()*
-	A function can be used for |g:lightline.component_function|.
+	Return the infomation about |ddu-ui-ff| such as |ddu-option-name|,
+	current and displayed line numbers, max items and whether in async.
 	Return an empty string when ddu UI is not available.
 
 ==============================================================================
