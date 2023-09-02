@@ -3,15 +3,15 @@
 Author: Hibiki <mail@4513echo.dev>
 License: MIT License
 URL: https://github.com/4513ECHO/lightline-ddu-ui-ff
-Last change: 2023 Aug 01
+Last change: 2023 Sep 02
 
 ==============================================================================
 CONTENTS                                        *lightline-ddu-ui-ff-contents*
 
-Introduction					|lightline-ddu-ui-ff-introduction|
-Interface					|lightline-ddu-ui-ff-interface|
-  Functions					|lightline-ddu-ui-ff-functions|
-About						|lightline-ddu-ui-ff-about|
+Introduction				|lightline-ddu-ui-ff-introduction|
+Interface				|lightline-ddu-ui-ff-interface|
+  Functions				|lightline-ddu-ui-ff-functions|
+About					|lightline-ddu-ui-ff-about|
 
 ==============================================================================
 INTRODUCTION                                *lightline-ddu-ui-ff-introduction*
@@ -19,13 +19,12 @@ INTRODUCTION                                *lightline-ddu-ui-ff-introduction*
 *lightline-ddu-ui-ff* is a plugin to provide a |lightline| integration for
 |ddu-ui-ff|.
 
-Vim v9.0.1276+ or Neovim v0.8.0+ is required, and following plugins:
-|denops.vim|, |ddu|.vim, |ddu-ui-ff|, |lightline|.vim.
+Vim v9.0.1276+ or Neovim v0.8.0+ and following plugins are required:
 
-https://github.com/vim-denops/denops.vim
-https://github.com/Shougo/ddu.vim
-https://github.com/Shougo/ddu-ui-ff
-https://github.com/itchyny/lightline.vim
+- |denops.vim|	(https://github.com/vim-denops/denops.vim)
+- |ddu|.vim	(https://github.com/Shougo/ddu.vim)
+- |ddu-ui-ff|	(https://github.com/Shougo/ddu-ui-ff)
+- |lightline|	(https://github.com/itchyny/lightline.vim)
 
 Then you have to set up following settings:
 
@@ -41,9 +40,9 @@ Then you have to set up following settings:
 	      \ },
 	      \ }
 
-- If you use |ddu-ui-ff| with Neovim's floating window (|api-floatwin|), in the
-  other word if you set |ddu-ui-ff-param-split| to "floating", it is
-  recommended to set 'laststatus' to 3. >
+- If you use |ddu-ui-ff| with Neovim's floating window (|api-floatwin|),
+  in the other word if you set |ddu-ui-ff-param-split| to "floating",
+  it is recommended to use global |status-line| (set 'laststatus' to 3): >
 	set laststatus=3
 
 ==============================================================================
